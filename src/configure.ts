@@ -11,7 +11,7 @@ export function configure(app: INestApplication, frontendOrigin: string): void {
 
   app.setGlobalPrefix('api');
   app.enableVersioning({ type: VersioningType.URI, defaultVersion: [VERSION_NEUTRAL, '1'] });
-  app.enableCors({ origin: [frontendOrigin], methods: ['GET', 'POST'], allowedHeaders: ['Content-Type'] });
+  app.enableCors({ origin: [frontendOrigin], methods: ['GET', 'POST', 'DELETE'], allowedHeaders: ['Content-Type'] });
   app.use(helmet({
     contentSecurityPolicy: {
       directives: { scriptSrc: ["'self'", "'unsafe-inline'"], upgradeInsecureRequests: null },

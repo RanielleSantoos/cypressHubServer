@@ -8,9 +8,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node --env-file-if-exists=.env dist/main.js",
+    "db:start": "node --env-file-if-exists=.env scripts/start-local-database.cjs",
     "db:generate": "prisma generate",
     "db:migrate": "node --env-file-if-exists=.env scripts/migrate.cjs",
-    "test": "npm run build && node --test test/api.test.cjs"
+    "test": "npm run build && node --test test/api.test.cjs test/discover-specs.test.cjs",
+    "test:integration": "npm run build && node --env-file-if-exists=.env --test test/workspace.integration.test.cjs"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.0",

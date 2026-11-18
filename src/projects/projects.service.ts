@@ -1,23 +1,26 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import type { Project } from '@prisma/client';
 import { PrismaService } from '../prisma.service';
-import { CreateProjectDto } from './project.dto';
+import { CreateProjectDto, ProjectDto } from './project.dto';
+
+const fields = {
+  id: true, name: true, description: true, repositoryUrl: true, createdAt: true, updatedAt: true,
+} as const;
 
 @Injectable()
 export class ProjectsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  list(): Promise<Project[]> {
-    return this.prisma.project.findMany({ orderBy: [{ createdAt: 'desc' }, { id: 'desc' }] });
+  list(): Promise<ProjectDto[]> {
+    return this.prisma.project.findMany({ select: fields, orderBy: [{ createdAt: 'desc' }, { id: 'desc' }] });
   }
 
-  async find(id: string): Promise<Project> {
-    const project = await this.prisma.project.findUnique({ where: { id } });
+  async find(id: string): Promise<ProjectDto> {
+    const project = await this.prisma.project.findUnique({ where: { id }, select: fields });
     if (!project) throw new NotFoundException('Projeto não encontrado.');
     return project;
   }
 
-  create({ name, description, repositoryUrl }: CreateProjectDto): Promise<Project> {
-    return this.prisma.project.create({ data: { name, description, repositoryUrl } });
+  create({ name, description, repositoryUrl }: CreateProjectDto): Promise<ProjectDto> {
+    return this.prisma.project.create({ data: { name, description, repositoryUrl }, select: fields });
   }
 }
