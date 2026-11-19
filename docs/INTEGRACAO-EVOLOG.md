@@ -41,3 +41,7 @@ O projeto carrega `.env` antes de `.env-qas`. Confirme os destinos efetivos de h
 O modelo de execução isola código Cypress e navegador em um worker Docker. A API envia à fila o identificador do agendamento ou da execução manual, ambiente aprovado, navegador e caminho relativo da spec. O worker usa a configuração do repositório e recebe os segredos por ambiente. Ele reporta duração, status e evidências à API. A fila Redis/BullMQ, o disparo recorrente e o histórico fazem parte dessa etapa de execução. Dashboard e Relatórios usam os dados retornados pelo worker.
 
 Consulte as decisões de infraestrutura e dados em [Implantação](DEPLOYMENT-SPEC.md) e [Checklist de go-live](GO-LIVE-CHECKLIST.md).
+
+## Relatórios e execuções fora da Agenda
+
+A tela **Relatórios** lista em grade os PDFs gerados em `cypress/relatorios`, incluindo arquivos de execuções iniciadas no terminal. Clique no cartão para visualizar o documento ou em **Baixar PDF** para salvá-lo. Clique em **Atualizar relatórios** depois de gerar um PDF. A listagem considera somente essa pasta e esse formato. `browser.json` continua como metadado do navegador para o gerador de PDF. A retenção depende dos PDFs preservados pelo gerador.

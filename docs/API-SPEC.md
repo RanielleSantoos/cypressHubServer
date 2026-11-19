@@ -51,3 +51,9 @@ As frequências aceitas são `ONCE`, `DAILY` e `WEEKLY`. Na consulta de casos po
 | POST | `/api/cypress/sync` | Sincroniza as specs por caminho e devolve os totais atualizados. A origem vem do ambiente do backend. |
 
 Após a sincronização, telas inferidas incluem `sourceDirectory` e podem ter `route` nula. Casos importados incluem `specPath` e `specAvailable`. O catálogo preserva os registros associados quando a spec desaparece. Remover um caso importado pelo endpoint de testes retorna 409.
+
+## Relatórios locais
+
+- `GET /api/cypress/reports` lista os PDFs de `cypress/relatorios` com caminho relativo e horário de modificação.
+- `GET /api/cypress/reports/{id}` fornece o PDF para o visualizador da tela Relatórios. Use o identificador emitido pela listagem.
+- `GET /api/cypress/reports/{id}?download=true` envia o mesmo PDF como anexo com o nome original do arquivo.

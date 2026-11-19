@@ -1,6 +1,6 @@
 # Instalação local no Windows e VS Code
 
-Instale Node.js 24 LTS com npm, Git, VS Code e Docker Desktop com Docker Compose v2. Inicie o Docker Desktop em modo de contêineres Linux. Execute os comandos a partir da pasta que contém os dois repositórios.
+Instale Node.js 24 LTS com npm, Git e VS Code. Use Docker Desktop com Compose v2 ou siga o [guia do PostgreSQL portátil sem Docker](POSTGRES-WINDOWS-SEM-DOCKER.md). Execute os comandos a partir da pasta que contém os dois repositórios.
 
 No VS Code, use **Terminal → Selecionar Perfil Padrão → Git Bash** e abra um novo terminal.
 

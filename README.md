@@ -71,3 +71,7 @@ A suíte HTTP usa a aplicação NestJS com substituto de Prisma e cobre saúde, 
 Com as migrations aplicadas no banco local, execute `npm run test:integration` no Git Bash ou `npm.cmd run test:integration` no PowerShell. O teste cria registros de verificação, testa o isolamento entre projetos e remove os dados que criou ao terminar.
 
 Se a geração falhar no download, verifique o acesso a `binaries.prisma.sh` e a configuração de proxy da rede. Consulte também a [arquitetura](docs/ARCHITECTURE.md), o [contrato REST](docs/API-SPEC.md), o [modelo de dados](docs/DATA-MODEL.md) e a [documentação de implantação](docs/DEPLOYMENT-SPEC.md).
+
+## Notebook Windows sem Docker
+
+A primeira configuração do PostgreSQL local pode ser feita com `npm run db:setup:windows`. Consulte o [guia do banco portátil](docs/POSTGRES-WINDOWS-SEM-DOCKER.md).
